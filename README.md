@@ -4,4 +4,3 @@ Noan KOUKA
 Maxime MARC
 Léane CAILLEREZ
 Chloé JACOTIN 
-Daris POSSAMAÏ
