@@ -3,21 +3,36 @@ export class DOMManager {
     /**
      * Ajoute toutes les images d'une collection sur le gameBoard
      * @param {Image[]} images
+     * //----
+     * @param {number} totalPairs
+     * //----
      */
-    createCards(images) {
+    createCards(images, totalPairs) {
         const gameBoard = document.querySelector('.game-board');
         //----
         const template = document.querySelector('#carteAJouer');
-        for(const i of images){
+        let tab = [];
+        let i = 0
+        for(const image of images){
+            if(i>=totalPairs){
+                break;
+            }
             const newDiv = document.importNode(template.content, true);
             newDiv.querySelector('.card-back')
                 .querySelector('img')
-                .setAttribute('src', i.url);
+                .setAttribute('src', image.url);
             newDiv.querySelector('.card-back')
                 .querySelector('img')
-                .setAttribute('alt', i.name);
-            gameBoard.append(newDiv);
+                .setAttribute('alt', image.name);
+            tab.push(newDiv);
+            i+=1;
         }
+        tab.sort(() => Math.random() - 0.5);
+        for (const div of tab){
+            gameBoard.append(div);
+        }
+
+
         //----
 
         /**
