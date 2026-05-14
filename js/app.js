@@ -14,15 +14,16 @@ document.querySelector('.game-form').addEventListener('submit', async function (
     console.log(formData);
     console.log(pseudo);
     console.log(difficulte);
-    document.querySelector('.setup-form').classList.add('hidden');
     //----
     try {
         const data = await ApiService.createGame(pseudo, difficulte);
         console.log('Success:', data, data.id);
-        game.startGame(data.id);
+        //----
+        document.querySelector('.setup-form').classList.add('hidden');
+        //----
+        game.startGame(data.id, data.difficulty, data.collection);
     } catch (error) {
         console.error('Error:', error);
         alert(error.message || 'Erreur lors de la création de la partie');
     }
-
 });
