@@ -18,7 +18,9 @@ export class ApiService {
             },
             body: JSON.stringify({
                 //----
-                id: pseudo+difficulty
+                id: 1234,
+                pseudo: pseudo,
+                difficulty: difficulty,
             })
         });
         console.log(response);
