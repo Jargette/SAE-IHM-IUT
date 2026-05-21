@@ -14,4 +14,5 @@
  * @property {Collection} animals
  * @property {Collection} fruits
  * @property {Collection} cars
+ * @property {Collection} pokemon
  */
