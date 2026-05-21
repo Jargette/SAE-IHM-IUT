@@ -6,19 +6,26 @@ export class DOMManager {
      */
     createCards(images) {
         const gameBoard = document.querySelector('.game-board');
+
+        //todo
+
         const template = document.querySelector('#carteAJouer');
         let tab = [];
         let i = 0
         for (const image of images) {
             const newDiv = document.importNode(template.content, true);
+
             newDiv.querySelector('.card-back')
                 .querySelector('img')
                 .setAttribute('src', image.url);
             newDiv.querySelector('.card-back')
                 .querySelector('img')
                 .setAttribute('alt', image.name);
+            console.log(image)
             gameBoard.append(newDiv);
+
         }
+
         /**
          * Voici un exemple de contenu de card permettant de contenir une partie masqué
          * et l'image qui doit être révélée.
