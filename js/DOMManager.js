@@ -6,9 +6,6 @@ export class DOMManager {
      */
     createCards(images) {
         const gameBoard = document.querySelector('.game-board');
-
-        //todo
-
         const template = document.querySelector('#carteAJouer');
         let tab = [];
         let i = 0
@@ -20,11 +17,8 @@ export class DOMManager {
             newDiv.querySelector('.card-back')
                 .querySelector('img')
                 .setAttribute('alt', image.name);
-            console.log(newDiv)
             gameBoard.append(newDiv);
-
         }
-
         /**
          * Voici un exemple de contenu de card permettant de contenir une partie masqué
          * et l'image qui doit être révélée.
