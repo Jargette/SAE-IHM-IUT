@@ -36,4 +36,15 @@ export const imageCollections = {
         {id: 8, name: "car8", url: "./assets/images/cars/car8.png"},
 
     ],
+    pokemon: [
+        {id: 1, name: "pokemon1", url: "./assets/images/pokemon/pokemon1.png"},
+        {id: 2, name: "pokemon2", url: "./assets/images/pokemon/pokemon2.png"},
+        {id: 3, name: "pokemon3", url: "./assets/images/pokemon/pokemon3.png"},
+        {id: 4, name: "pokemon4", url: "./assets/images/pokemon/pokemon4.png"},
+        {id: 5, name: "pokemon5", url: "./assets/images/pokemon/pokemon5.png"},
+        {id: 6, name: "pokemon6", url: "./assets/images/pokemon/pokemon6.png"},
+        {id: 7, name: "pokemon7", url: "./assets/images/pokemon/pokemon7.png"},
+        {id: 8, name: "pokemon8", url: "./assets/images/pokemon/pokemon8.png"},
+
+    ],
 };
