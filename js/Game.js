@@ -1,27 +1,27 @@
 import {imageCollections} from './ImageCollection.js';
 import {ApiService} from './ApiService.js';
 
+//----
+const images = [imageCollections.animals, imageCollections.fruits, imageCollections.cars]
+//----
+
 export class Game {
     /**
      * @type {number} id identifiant de la partie en cours
      */
     #id;
-    //----
+
+    //
     timerInterval;
-    pairs;
-    firstCard = null;
-    secondCard = null;
-    lock = false;
-    pairsRestantes;
-    //----
+    cartes=[];
+    nbPaires;
 
     async endGame() {
-        //----
+        //Todo
         clearInterval(this.timerInterval);
-        //----
 
-        const idARemplacer = this.id;
-        const nombreDePairesRestanteARemplacer = this.pairs;
+        const idARemplacer = this.#id;
+        const nombreDePairesRestanteARemplacer = 5678;
 
         try {
             const result = await ApiService.updateGameResult(idARemplacer, nombreDePairesRestanteARemplacer);
@@ -35,75 +35,56 @@ export class Game {
     /**
      * Start a new game.
      * @param {number} id - The game ID.
-     * //----
-     * @param {number} difficulty
-     * @param {string} collection
-     * //----
      */
-    startGame(id, difficulty, collection) {
+    startGame(id) {
         this.#id = id;
-        //----
-        this.pairs = 4+difficulty;
-        for (const col of imageCollections){
-            if (JSON.stringify(col)===collection) {
-                const cartes = col;
-                createCards(cartes, this.totalPairs);
-            }
-        }
-        document.querySelectorAll('.card-back').forEach(carte => {
-            carte.addEventListener('click', this.flipCard(carte))})
+
+        //todo
+        const gameArea = document.querySelector('.game-area')
+        gameArea.classList.remove('hidden');
         this.startTimer();
-        const abandon = document.createElement('button')
-        abandon.innerHTML="Abandon";
-        abandon.addEventListener('click', this.endGame.bind(this));
-        document.querySelector('.game-area-header').append(abandon)
+        this.boutonAbandon();
+        console.log(imageCollections)
         //----
     }
+
+    //todo
     //----
     startTimer() {
         let time = 180;
-        const timer = document.createElement('p');
+        const timer = document.createElement('div');
+        timer.classList.add('game-timer');
+        timer.innerHTML = `Temps restant : ${time} s`;
         document.querySelector('.game-area-header').append(timer);
         this.timerInterval = setInterval(() => {
-            time-=1;
-            timer.innerHTML = `Temps restant : ${time} s.`;
+            time -= 1;
+            timer.innerHTML = `Temps restant : ${time}s`;
+            if (time === 0) {
+                this.endGame();
+            }
         }, 1000);
 
     }
 
-    flipCard(card) {
-
-        if (this.lock || card.classList.contains("hidden")) return;
-
-        card.classList.add("hidden");
-        card.textContent = card.dataset.value;
-
-        if (!this.firstCard) {
-            this.firstCard = card;
-            return;
-        }
-
-        this.secondCard = card;
-
-        if (this.firstCard.dataset.value === this.secondCard.dataset.value) {
-            this.pairs-=1;
-            this.resetTurn();
-            if(this.pairs === 0){
-                this.endGame();
-            }
-        } else {
-            this.lock = true;
-            setTimeout(() => {
-                this.firstCard.classList.remove("hidden");
-                this.secondCard.classList.remove("hidden");
-                this.resetTurn();
-            }, 1000);
-        }
+    boutonAbandon() {
+        const abandon = document.createElement('button')
+        abandon.id = 'abandon'
+        abandon.innerHTML = "Abandonner";
+        abandon.addEventListener('click', this.endGame.bind(this));
+        document.querySelector('.game-area-header').append(abandon)
     }
 
-    resetTurn() {
-        this.firstCard = null;
-        this.secondCard = null;
-        this.lock = false;
+    /**
+     * Crée le tableau de cartes dans le jeu
+     * @param {number}collection
+     * @param {number}difficulte
+     */
+    generateCards(collection, difficulte) {
+        const theme = images[collection];
+        this.nbPaires = 4+difficulte;
+        for(let i = 0; i < this.nbPaires; ++i){
+            this.cartes.push(theme[i]);
+        }
+        console.log(this.cartes)
     }
 }
