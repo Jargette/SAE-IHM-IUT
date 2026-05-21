@@ -3,20 +3,16 @@ export class DOMManager {
     /**
      * Ajoute toutes les images d'une collection sur le gameBoard
      * @param {Image[]} images
-     * //----
-     * @param {number} totalPairs
-     * //----
      */
-    createCards(images, totalPairs) {
+    createCards(images) {
         const gameBoard = document.querySelector('.game-board');
-        //----
+
+        //todo
+
         const template = document.querySelector('#carteAJouer');
         let tab = [];
         let i = 0
-        for(const image of images){
-            if(i>=totalPairs){
-                break;
-            }
+        for (const image of images) {
             const newDiv = document.importNode(template.content, true);
             newDiv.querySelector('.card-back')
                 .querySelector('img')
@@ -24,16 +20,10 @@ export class DOMManager {
             newDiv.querySelector('.card-back')
                 .querySelector('img')
                 .setAttribute('alt', image.name);
-            tab.push(newDiv);
-            i+=1;
-        }
-        tab.sort(() => Math.random() - 0.5);
-        for (const div of tab){
-            gameBoard.append(div);
-        }
+            console.log(newDiv)
+            gameBoard.append(newDiv);
 
-
-        //----
+        }
 
         /**
          * Voici un exemple de contenu de card permettant de contenir une partie masqué
