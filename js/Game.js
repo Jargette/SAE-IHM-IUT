@@ -84,6 +84,7 @@ export class Game {
         this.nbPaires = 4+difficulte;
         for(let i = 0; i < this.nbPaires; ++i){
             this.cartes.push(theme[i]);
+            this.cartes.push(theme[i]);
         }
         console.log(this.cartes)
     }
