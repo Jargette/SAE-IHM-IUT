@@ -47,4 +47,15 @@ export const imageCollections = {
         {id: 8, name: "pokemon8", url: "./assets/images/pokemon/pokemon8.png"},
 
     ],
+        foods: [
+        {id: 1, name: "food1", url: "./assets/images/foods/food1.png"},
+        {id: 2, name: "food2", url: "./assets/images/foods/food2.png"},
+        {id: 3, name: "food3", url: "./assets/images/foods/food3.png"},
+        {id: 4, name: "food4", url: "./assets/images/foods/food4.png"},
+        {id: 5, name: "food5", url: "./assets/images/foods/food5.png"},
+        {id: 6, name: "food6", url: "./assets/images/foods/food6.jpeg"},
+        {id: 7, name: "food7", url: "./assets/images/foods/food7.png"},
+        {id: 8, name: "food8", url: "./assets/images/foods/food8.png"},
+
+    ],
 };
