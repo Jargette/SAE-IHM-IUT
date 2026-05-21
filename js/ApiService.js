@@ -18,13 +18,13 @@ export class ApiService {
             },
             body: JSON.stringify({
                 //----
-                id: 1234,
-                pseudo: pseudo,
+                name: pseudo,
                 difficulty: difficulty,
             })
         });
         console.log(response);
         if (!response.ok) {
+            console.log("Erreur dans CreateGame")
             throw new Error('Erreur lors de la création de la partie');
         }
         return response.json();
