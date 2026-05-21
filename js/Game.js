@@ -3,6 +3,7 @@ import {ApiService} from './ApiService.js';
 
 //----
 const images = [imageCollections.animals, imageCollections.fruits, imageCollections.cars]
+
 //----
 
 export class Game {
@@ -13,7 +14,7 @@ export class Game {
 
     //
     timerInterval;
-    cartes=[];
+    cartes = [];
     nbPaires;
 
     async endGame() {
@@ -81,11 +82,10 @@ export class Game {
      */
     generateCards(collection, difficulte) {
         const theme = images[collection];
-        this.nbPaires = 4+difficulte;
-        for(let i = 0; i < this.nbPaires; ++i){
+        this.nbPaires = 4 + difficulte;
+        for (let i = 0; i < this.nbPaires; ++i) {
             this.cartes.push(theme[i]);
             this.cartes.push(theme[i]);
         }
-        console.log(this.cartes)
     }
 }
